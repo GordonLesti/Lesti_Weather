@@ -22,7 +22,7 @@ class Lesti_Weather_Model_Weather
     {
         $cache = Mage::getSingleton('core/cache');
         $this->_weather = unserialize($cache->load($this->_cache_key));
-        if(is_null($this->_weather)) {
+        if($this->_weather) {
             $this->_weather = $this->_getWeather();
             $cache->save(serialize($this->_weather), $this->_cache_key, array(), 900);
         }
