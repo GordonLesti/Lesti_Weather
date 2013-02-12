@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <general>
+            <groups>
+                <weather translate="label">
+                    <label>Weather</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <lat translate="label">
+                            <label>lat</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lat>
+                        <lon translate="label">
+                            <label>lon</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lon>
+                        <temp_unit translate="label">
+                            <label>Temprature Unit</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>weather/adminhtml_system_config_source_weather_unit_temperature</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </temp_unit>
+                        <speed_unit translate="label">
+                            <label>Wind Unit</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>weather/adminhtml_system_config_source_weather_unit_speed</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </speed_unit>
+                    </fields>
+                </weather>
+            </groups>
+        </general>
+    </sections>
+</config>
