@@ -30,12 +30,32 @@
                 </weather>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <Lesti_Weather>
+                    <files>
+                        <default>Lesti_Weather.csv</default>
+                    </files>
+                </Lesti_Weather>
+            </modules>
+        </translate>
     </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Lesti_Weather>
+                    <files>
+                        <default>Lesti_Weather.csv</default>
+                    </files>
+                </Lesti_Weather>
+            </modules>
+        </translate>
+    </adminhtml>
     <default>
         <general>
             <weather>
-                <lat><![CDATA[52.549584]]></lat>
-                <lon><![CDATA[13.364475]]></lon>
+                <lat><![CDATA[52.550024]]></lat>
+                <lon><![CDATA[13.361027]]></lon>
                 <temp_unit><![CDATA[C]]></temp_unit>
                 <speed_unit><![CDATA[kmh]]></speed_unit>
             </weather>
