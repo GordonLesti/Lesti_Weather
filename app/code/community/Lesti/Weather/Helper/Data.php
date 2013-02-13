@@ -10,7 +10,7 @@ class Lesti_Weather_Helper_Data extends Mage_Core_Helper_Abstract
 {
     public static function calculateTemperatureFromKelvin($temp,
                                                           $unit = Lesti_Weather_Model_Weather_Temperature::KELVIN,
-                                                          $round =2)
+                                                          $round = 1)
     {
         switch($unit) {
             case Lesti_Weather_Model_Weather_Temperature::KELVIN:
@@ -34,7 +34,7 @@ class Lesti_Weather_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function calculateSpeedFromMps($speed,
                                           $unit = Lesti_Weather_Model_Weather_Speed::MILES_PER_HOUR,
-                                          $round = 2)
+                                          $round = 1)
     {
         switch($unit) {
             case Lesti_Weather_Model_Weather_Speed::MILES_PER_HOUR:

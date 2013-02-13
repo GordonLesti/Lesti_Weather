@@ -14,8 +14,7 @@ class Lesti_Weather_Model_Adminhtml_System_Config_Source_Weather_Unit_Temperatur
             array('value' => Lesti_Weather_Model_Weather_Temperature::KELVIN, 'label' => Mage::helper('weather')->__('Kelvin')),
             array('value' => Lesti_Weather_Model_Weather_Temperature::GRAD_CELSIUS, 'label' => Mage::helper('weather')->__('Grad Celsius')),
             array('value' => Lesti_Weather_Model_Weather_Temperature::GRAD_FAHRENHEI, 'label' => Mage::helper('weather')->__('Grad Fahrenheit')),
-            array('value' => Lesti_Weather_Model_Weather_Temperature::GRAD_RANKINE, 'label' => Mage::helper('weather')->__('Grad Rankine')),
-            array('value' => Lesti_Weather_Model_Weather_Temperature::GRAD_REAUMUR, 'label' => Mage::helper('weather')->__('Grad Reaumur'))
+            array('value' => Lesti_Weather_Model_Weather_Temperature::GRAD_RANKINE, 'label' => Mage::helper('weather')->__('Grad Rankine'))
         );
     }
 }

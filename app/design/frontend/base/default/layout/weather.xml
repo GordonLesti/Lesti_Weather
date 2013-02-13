@@ -2,6 +2,9 @@
 <layout version="0.1.0">
 
     <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/weather.css</stylesheet></action>
+        </reference>
         <reference name="right">
             <block type="weather/weather" name="weather" template="weather/weather.phtml"/>
         </reference>

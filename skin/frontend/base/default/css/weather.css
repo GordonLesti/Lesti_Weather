@@ -1,0 +1,12 @@
+/* Block: Weather */
+.block .weather { margin:0;
+    padding:5px 9px;
+    background-position:0 0;
+    background-repeat:no-repeat;
+    padding-left:51px;}
+.block-weather .block-title strong {  background-position:0 0;
+    background-repeat:no-repeat;
+    padding-left:21px;
+    background-image:url(../images/weather/i_block-weather.gif); }
+.block .weather strong { font-size:190%; padding-right: 5px; }
+.block .weather span { white-space:nowrap; }

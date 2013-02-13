@@ -6,5 +6,18 @@
  * Time: 17:11
  * To change this template use File | Settings | File Templates.
  */
-$_weather = $this->getWeather();
-echo 'es sind heute '.$_weather->getTemperature().' Grad, bei ' .$_weather->getWind().' km/h:';
+?>
+<?php $_weather = $this->getWeather(); ?>
+<div class="block block-weather" title="<?php echo $_weather->getWeatherDescription() ?>">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Weather') ?></span></strong>
+    </div>
+    <p class="block-subtitle"><?php echo $_weather->getLocation(); ?></p>
+    <div class="block-content">
+        <p class="weather" style="background-image:url(<?php echo $this->getSkinUrl($_weather->getWeatherIcon()) ?>)">
+            <strong><?php echo $_weather->getTemperature() ?></strong>
+            <span><?php echo $_weather->getWind() ?></span>
+        </p>
+        <p class="empty"><a href="http://openweathermap.org/" title="Open Weather Map" target="_blank">Open Weather Map</a></p>
+    </div>
+</div>

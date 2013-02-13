@@ -11,4 +11,12 @@ class Lesti_Weather_Model_Weather_Speed
     const MILES_PER_HOUR = 'mph';
     const KILOMETERS_PER_HOUR = 'kmh';
 
+    public function getUnitLabel($unit)
+    {
+        switch($unit) {
+            case self::MILES_PER_HOUR: return 'mph';
+            case self::KILOMETERS_PER_HOUR: return 'km/h';
+        }
+    }
+
 }
