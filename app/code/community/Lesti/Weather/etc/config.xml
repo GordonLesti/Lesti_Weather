@@ -56,8 +56,8 @@
             <weather>
                 <lat><![CDATA[52.550024]]></lat>
                 <lon><![CDATA[13.361027]]></lon>
-                <temp_unit><![CDATA[C]]></temp_unit>
-                <speed_unit><![CDATA[kmh]]></speed_unit>
+                <temp_unit><![CDATA[&deg;C]]></temp_unit>
+                <speed_unit><![CDATA[km/h]]></speed_unit>
             </weather>
         </general>
     </default>

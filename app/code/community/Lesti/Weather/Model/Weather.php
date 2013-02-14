@@ -34,7 +34,7 @@ class Lesti_Weather_Model_Weather
         if(isset($this->_weather['temp'])) {
             $unit = Mage::getStoreConfig(self::XML_PATH_TEMP_UNIT);
             return Mage::helper('weather')->calculateTemperatureFromKelvin($this->_weather['temp'], $unit) .
-                ' ' . Mage::getModel('weather/weather_temperature')->getUnitLabel($unit);
+                ' ' . Mage::helper('weather')->__($unit);
         }
         return '';
     }
@@ -44,7 +44,7 @@ class Lesti_Weather_Model_Weather
         if(isset($this->_weather['wind'])) {
             $unit = Mage::getStoreConfig(self::XML_PATH_SPEED_UNI);
             return Mage::helper('weather')->calculateSpeedFromMps($this->_weather['wind'], $unit) .
-                ' ' . Mage::getModel('weather/weather_speed')->getUnitLabel($unit);
+                ' ' . Mage::helper('weather')->__($unit);
         }
         return '';
     }

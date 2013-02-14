@@ -9,17 +9,7 @@
 class Lesti_Weather_Model_Weather_Temperature
 {
     const KELVIN = 'K';
-    const GRAD_CELSIUS = 'C';
-    const GRAD_FAHRENHEI = 'F';
-    const GRAD_RANKINE = 'R';
-
-    public function getUnitLabel($unit)
-    {
-        switch($unit) {
-            case self::KELVIN: return 'K';
-            case self::GRAD_CELSIUS: return '&deg;C';
-            case self::GRAD_FAHRENHEI: return '&deg;F';
-            case self::GRAD_RANKINE: return '&deg;Ra';
-        }
-    }
+    const CELSIUS = '&deg;C';
+    const FAHRENHEI = '&deg;F';
+    const RANKINE = '&deg;Ra';
 }
