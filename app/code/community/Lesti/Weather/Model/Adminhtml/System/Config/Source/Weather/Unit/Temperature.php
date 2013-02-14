@@ -12,13 +12,13 @@ class Lesti_Weather_Model_Adminhtml_System_Config_Source_Weather_Unit_Temperatur
     {
         return array(
             array('value' => Lesti_Weather_Model_Weather_Temperature::KELVIN,
-                'label' => Mage::helper('weather')->__(Lesti_Weather_Model_Weather_Temperature::KELVIN)),
+                'label' => Mage::helper('weather')->__('Kelvin')),
             array('value' => Lesti_Weather_Model_Weather_Temperature::CELSIUS,
-                'label' => Mage::helper('weather')->__(Lesti_Weather_Model_Weather_Temperature::CELSIUS)),
+                'label' => Mage::helper('weather')->__('Celsius')),
             array('value' => Lesti_Weather_Model_Weather_Temperature::FAHRENHEI,
-                'label' => Mage::helper('weather')->__(Lesti_Weather_Model_Weather_Temperature::FAHRENHEI)),
+                'label' => Mage::helper('weather')->__('Fahrenheit')),
             array('value' => Lesti_Weather_Model_Weather_Temperature::RANKINE,
-                'label' => Mage::helper('weather')->__(Lesti_Weather_Model_Weather_Temperature::RANKINE))
+                'label' => Mage::helper('weather')->__('Rankine'))
         );
     }
 }
