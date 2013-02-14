@@ -3,7 +3,8 @@
     padding:5px 9px;
     background-position:0 0;
     background-repeat:no-repeat;
-    padding-left:51px;}
+    padding-left:51px;
+    margin-left:5px; }
 .block-weather .block-title strong {  background-position:0 0;
     background-repeat:no-repeat;
     padding-left:21px;

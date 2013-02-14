@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Lesti_Weather>
-            <version>0.1.0</version>
+            <version>0.1.2</version>
         </Lesti_Weather>
     </modules>
     <global>
