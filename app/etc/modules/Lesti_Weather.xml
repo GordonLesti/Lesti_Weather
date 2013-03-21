@@ -4,6 +4,9 @@
         <Lesti_Weather>
             <active>true</active>
             <codePool>community</codePool>
+            <depends>
+                <Mage_Core/>
+            </depends>
         </Lesti_Weather>
     </modules>
 </config>
