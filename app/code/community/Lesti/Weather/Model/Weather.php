@@ -87,7 +87,9 @@ class Lesti_Weather_Model_Weather
 
     public function getDate()
     {
-        return isset($this->_weather['date']) ? $this->_weather['date'] : new Zend_Date();
+        $gtmOffset = Mage::getModel('core/date')->getGmtOffset('hours');
+        return isset($this->_weather['date']) ? $this->_weather['date']->add($gtmOffset, Zend_Date::HOUR) :
+            new Zend_Date();
     }
 
     protected function _getWeather()
