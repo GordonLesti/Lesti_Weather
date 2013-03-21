@@ -76,8 +76,7 @@ class Lesti_Weather_Model_Weather
 
     public function getWeatherDescription()
     {
-        return isset($this->_weather['desc']) ? Mage::helper('weather')->__($this->_weather['desc']) .
-            ' ' . $this->getTemperature() : '';
+        return isset($this->_weather['desc']) ? Mage::helper('weather')->__($this->_weather['desc']) : '';
     }
 
     public function getWeatherIcon()
