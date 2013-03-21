@@ -87,38 +87,38 @@ class Lesti_Weather_Model_Weather
 
     public function getDate()
     {
-        return isset($this->_weather['date']) ? $this->_weather['date'] :
-            new Zend_Date();
+        $date = isset($this->_weather['date']) ? $this->_weather['date']->setTimeZone(
+                Mage::getStoreConfig(Mage_Core_Model_Locale::XML_PATH_DEFAULT_TIMEZONE)
+        ) : new Zend_Date();
+        return $date;
     }
 
     protected function _getWeather()
     {
-        $curl = new Varien_Http_Adapter_Curl();
-        $curl->setConfig(array(
-            'timeout'   => $this->_curl_opt_timeout
-        ));
-        $url = $this->_openweathermap_url . '?lat=' . $this->_getLat() . '&lon=' . $this->_getLon();
-        $curl->write(Zend_Http_Client::GET, $url);
-        $data = $curl->read();
-        $curl->close();
-        $data = preg_split('/^\r?$/m', $data, 2);
-        $data = json_decode(trim($data[1]));
-        $list = $data->list;
         $weather = array();
-        if(isset($list[0])) {
-            $weather['temp'] = floatval($list[0]->main->temp);
-            $weather['wind'] = floatval($list[0]->wind->speed);
-            $weather['location'] = htmlspecialchars($list[0]->name);
-            $date = new Zend_Date();
-            $date->setTimezone('GMT');
-            $date->setTime($list[0]->dt, Zend_Date::TIMESTAMP);
-            $date->setTimezone(Mage::app()->getStore()->getConfig(Mage_Core_Model_Locale::XML_PATH_DEFAULT_TIMEZONE));
-            $weather['date'] = $date;
-            if(isset($list[0]->weather[0])) {
-                $weather['desc'] = htmlspecialchars($list[0]->weather[0]->description);
-                $weather['icon'] = htmlspecialchars($list[0]->weather[0]->icon);
+        try{
+            $curl = new Varien_Http_Adapter_Curl();
+            $curl->setConfig(array(
+                'timeout'   => $this->_curl_opt_timeout
+            ));
+            $url = $this->_openweathermap_url . '?lat=' . $this->_getLat() . '&lon=' . $this->_getLon();
+            $curl->write(Zend_Http_Client::GET, $url);
+            $data = $curl->read();
+            $curl->close();
+            $data = preg_split('/^\r?$/m', $data, 2);
+            $data = json_decode(trim($data[1]));
+            $list = $data->list;
+            if(isset($list[0])) {
+                $weather['temp'] = floatval($list[0]->main->temp);
+                $weather['wind'] = floatval($list[0]->wind->speed);
+                $weather['location'] = htmlspecialchars($list[0]->name);
+                $weather['date'] = new Zend_Date($list[0]->dt, Zend_Date::TIMESTAMP, new Zend_Locale());
+                if(isset($list[0]->weather[0])) {
+                    $weather['desc'] = htmlspecialchars($list[0]->weather[0]->description);
+                    $weather['icon'] = htmlspecialchars($list[0]->weather[0]->icon);
+                }
             }
-        }
+        } catch (Exception $e) {}
         return $weather;
     }
 
