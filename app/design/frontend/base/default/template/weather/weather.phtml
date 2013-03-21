@@ -12,6 +12,7 @@
     $_temp_round = 1;
     $_wind_round = 1;
     $_helper = Mage::helper('weather');
+    $_date = $_weather->getDate();
 ?>
 <div class="block block-weather" title="<?php echo $_weather->getWeatherDescription() ?>">
     <div class="block-title">
@@ -22,10 +23,14 @@
         <p class="weather" style="background-image:url(<?php echo $this->getSkinUrl($_weather->getWeatherIcon()) ?>)">
             <strong>
                 <?php echo round($_weather->getTemperature(), $_temp_round) . ' ' .
-                $_helper->__($this->getTemperatureUnit()) ?>
+                $_helper->__($_weather->getTemperatureUnit()) ?>
             </strong>
             <span>
-                <?php echo round($_weather->getWind(), $_wind_round) . ' ' . $_helper->__($this->getWindUnit()) ?>
+                <?php echo round($_weather->getWind(), $_wind_round) . ' ' . $_helper->__($_weather->getWindUnit()) ?>
+            </span>
+            <br/>
+            <span>
+                <?php echo $_date->get(Zend_Date::DATETIME_SHORT) ?>
             </span>
         </p>
         <?php // you can remove link if you want to, but it would be nice to thank OpenWeatherMap in this way. ?>

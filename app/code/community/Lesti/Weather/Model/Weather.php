@@ -15,7 +15,7 @@ class Lesti_Weather_Model_Weather
     const XML_PATH_LOCATION = 'general/weather/location';
 
     protected $_openweathermap_url = 'http://api.openweathermap.org/data/2.1/find/city';
-    protected $_curl_opt_timeout = 2;
+    protected $_curl_opt_timeout = 30;
     protected $_cache_key = 'weather_data';
     protected $_weather = null;
     protected $_temp_unit = null;
@@ -85,6 +85,11 @@ class Lesti_Weather_Model_Weather
         return isset($this->_weather['icon']) ? 'images/weather/' . $this->_weather['icon'] . '.png' : '';
     }
 
+    public function getDate()
+    {
+        return isset($this->_weather['date']) ? $this->_weather['date'] : new Zend_Date();
+    }
+
     protected function _getWeather()
     {
         $curl = new Varien_Http_Adapter_Curl();
@@ -103,6 +108,7 @@ class Lesti_Weather_Model_Weather
             $weather['temp'] = floatval($list[0]->main->temp);
             $weather['wind'] = floatval($list[0]->wind->speed);
             $weather['location'] = htmlspecialchars($list[0]->name);
+            $weather['date'] = new Zend_Date($list[0]->dt, Zend_Date::TIMESTAMP);
             if(isset($list[0]->weather[0])) {
                 $weather['desc'] = htmlspecialchars($list[0]->weather[0]->description);
                 $weather['icon'] = htmlspecialchars($list[0]->weather[0]->icon);

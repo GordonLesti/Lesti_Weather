@@ -18,14 +18,4 @@ class Lesti_Weather_Block_Weather extends Mage_Core_Block_Template
         return $this->_weather;
     }
 
-    public function getTemperatureUnit()
-    {
-        return $this->getWeather()->getTemperatureUnit();
-    }
-
-    public function getWindUnit()
-    {
-        return $this->getWeather()->getWindUNit();
-    }
-
 }
