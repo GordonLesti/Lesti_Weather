@@ -7,7 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
 ?>
-<?php $_weather = $this->getWeather(); ?>
+<?php
+    $_weather = $this->getWeather();
+    $_temp_round = 1;
+    $_wind_round = 1;
+    $_helper = Mage::helper('weather');
+?>
 <div class="block block-weather" title="<?php echo $_weather->getWeatherDescription() ?>">
     <div class="block-title">
         <strong><span><?php echo $this->__('Weather') ?></span></strong>
@@ -15,8 +20,13 @@
     <p class="block-subtitle"><?php echo $_weather->getLocation(); ?></p>
     <div class="block-content">
         <p class="weather" style="background-image:url(<?php echo $this->getSkinUrl($_weather->getWeatherIcon()) ?>)">
-            <strong><?php echo $_weather->getTemperature() ?></strong>
-            <span><?php echo $_weather->getWind() ?></span>
+            <strong>
+                <?php echo round($_weather->getTemperature(), $_temp_round) . ' ' .
+                $_helper->__($this->getTemperatureUnit()) ?>
+            </strong>
+            <span>
+                <?php echo round($_weather->getWind(), $_wind_round) . ' ' . $_helper->__($this->getWindUnit()) ?>
+            </span>
         </p>
         <?php // you can remove link if you want to, but it would be nice to thank OpenWeatherMap in this way. ?>
         <p class="empty"><a href="http://openweathermap.org/" title="OpenWeatherMap.org" target="_blank">OpenWeatherMap.org</a></p>

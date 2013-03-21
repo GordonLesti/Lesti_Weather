@@ -9,8 +9,7 @@
 class Lesti_Weather_Helper_Data extends Mage_Core_Helper_Abstract
 {
     public static function calculateTemperatureFromKelvin($temp,
-                                                          $unit = Lesti_Weather_Model_Weather_Temperature::KELVIN,
-                                                          $round = 1)
+                                                          $unit = Lesti_Weather_Model_Weather_Temperature::KELVIN)
     {
         switch($unit) {
             case Lesti_Weather_Model_Weather_Temperature::KELVIN:
@@ -25,16 +24,12 @@ class Lesti_Weather_Helper_Data extends Mage_Core_Helper_Abstract
             case Lesti_Weather_Model_Weather_Temperature::RANKINE:
                 $temp = $temp * 1.8;
                 break;
-            case Lesti_Weather_Model_Weather_Temperature::REAUMUR:
-                $temp =($temp - 273.15) * 0.8;
-                break;
         }
-        return round($temp, $round);
+        return $temp;
     }
 
     public function calculateSpeedFromMps($speed,
-                                          $unit = Lesti_Weather_Model_Weather_Speed::METER_PER_SECOND,
-                                          $round = 1)
+                                          $unit = Lesti_Weather_Model_Weather_Speed::METER_PER_SECOND)
     {
         switch($unit) {
             case Lesti_Weather_Model_Weather_Speed::METER_PER_SECOND:
@@ -50,7 +45,7 @@ class Lesti_Weather_Helper_Data extends Mage_Core_Helper_Abstract
                 $speed = 1.944 * $speed;
                 break;
         }
-        return round($speed, $round);
+        return $speed;
     }
 
 }

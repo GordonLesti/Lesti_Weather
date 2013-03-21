@@ -18,6 +18,8 @@ class Lesti_Weather_Model_Weather
     protected $_curl_opt_timeout = 2;
     protected $_cache_key = 'weather_data';
     protected $_weather = null;
+    protected $_temp_unit = null;
+    protected $_wind_unit = null;
 
     public function __construct()
     {
@@ -32,21 +34,35 @@ class Lesti_Weather_Model_Weather
     public function getTemperature()
     {
         if(isset($this->_weather['temp'])) {
-            $unit = Mage::getStoreConfig(self::XML_PATH_TEMP_UNIT);
-            return Mage::helper('weather')->calculateTemperatureFromKelvin($this->_weather['temp'], $unit) .
-                ' ' . Mage::helper('weather')->__($unit);
+            $unit = $this->getTemperatureUnit();
+            return Mage::helper('weather')->calculateTemperatureFromKelvin($this->_weather['temp'], $unit);
         }
         return '';
+    }
+
+    public function getTemperatureUnit()
+    {
+        if(is_null($this->_temp_unit)) {
+             $this->_temp_unit = Mage::getStoreConfig(self::XML_PATH_TEMP_UNIT);
+        }
+        return $this->_temp_unit;
     }
 
     public function getWind()
     {
         if(isset($this->_weather['wind'])) {
-            $unit = Mage::getStoreConfig(self::XML_PATH_SPEED_UNI);
-            return Mage::helper('weather')->calculateSpeedFromMps($this->_weather['wind'], $unit) .
-                ' ' . Mage::helper('weather')->__($unit);
+            $unit = $this->getWindUnit();
+            return Mage::helper('weather')->calculateSpeedFromMps($this->_weather['wind'], $unit);
         }
         return '';
+    }
+
+    public function getWindUnit()
+    {
+        if(is_null($this->_wind_unit)) {
+            $this->_wind_unit = Mage::getStoreConfig(self::XML_PATH_SPEED_UNI);
+        }
+        return $this->_wind_unit;
     }
 
     public function getLocation()
