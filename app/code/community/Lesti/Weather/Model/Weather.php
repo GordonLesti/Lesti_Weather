@@ -43,7 +43,7 @@ class Lesti_Weather_Model_Weather
     public function getTemperatureUnit()
     {
         if(is_null($this->_temp_unit)) {
-             $this->_temp_unit = Mage::getStoreConfig(self::XML_PATH_TEMP_UNIT);
+            $this->_temp_unit = Mage::getStoreConfig(self::XML_PATH_TEMP_UNIT);
         }
         return $this->_temp_unit;
     }
@@ -87,8 +87,7 @@ class Lesti_Weather_Model_Weather
 
     public function getDate()
     {
-        $gtmOffset = Mage::getModel('core/date')->getGmtOffset('hours');
-        return isset($this->_weather['date']) ? $this->_weather['date']->add($gtmOffset, Zend_Date::HOUR) :
+        return isset($this->_weather['date']) ? $this->_weather['date'] :
             new Zend_Date();
     }
 
@@ -110,7 +109,11 @@ class Lesti_Weather_Model_Weather
             $weather['temp'] = floatval($list[0]->main->temp);
             $weather['wind'] = floatval($list[0]->wind->speed);
             $weather['location'] = htmlspecialchars($list[0]->name);
-            $weather['date'] = new Zend_Date($list[0]->dt, Zend_Date::TIMESTAMP);
+            $date = new Zend_Date();
+            $date->setTimezone('GMT');
+            $date->setTime($list[0]->dt, Zend_Date::TIMESTAMP);
+            $date->setTimezone(Mage::app()->getStore()->getConfig(Mage_Core_Model_Locale::XML_PATH_DEFAULT_TIMEZONE));
+            $weather['date'] = $date;
             if(isset($list[0]->weather[0])) {
                 $weather['desc'] = htmlspecialchars($list[0]->weather[0]->description);
                 $weather['icon'] = htmlspecialchars($list[0]->weather[0]->icon);
